@@ -43,3 +43,17 @@
     border-bottom: 1px solid rgb(222, 227, 245);
     padding: 0;
 }
+
+.samples-list md-toolbar.list-tools md-input-container {
+    margin-right: 0;
+}
+
+.samples-list .search-group .md-button {
+    margin: 0;
+    vertical-align: bottom;
+}
+
+.samples-list .search-group .md-button .zmdi {
+    color: #FFB300;
+    font-size: 2em;
+}

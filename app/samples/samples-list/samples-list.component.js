@@ -16,13 +16,18 @@
 		ctrl.filter = {};
 
 		// Methods
+		ctrl.doSearch = doSearch;
 		ctrl.onFilterSelect = onFilterSelect;
+		ctrl.onKeyUp = onKeyUp;
 		ctrl.sortList = sortList;
 
 		// Init
 		init();
 
 		// Helpers
+		function doSearch() {
+			console.log("do search for: " + ctrl.searchTerm);
+		}
 
 		function init() {
 			ctrl.statuses = statusesService.statuses.query();
@@ -79,6 +84,11 @@
 				default:
 					break;
 			}
+		}
+
+		function onKeyUp(e) {
+			if(e.keyCode === 13)
+				doSearch();
 		}
 
 		function sortList(newSort) {

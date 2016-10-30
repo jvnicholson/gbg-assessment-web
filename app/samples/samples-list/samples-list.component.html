@@ -7,11 +7,18 @@
     </md-toolbar>
 
     <md-toolbar class="list-tools">
-        <div flex layout="row" layout-align="space-between center">
-            <md-input-container>
-                <label>Search</label>
-                <input type="text" ng-model="$ctrl.filter.createdBy"/>
-            </md-input-container>
+        <div flex layout="row" layout-align="start center">
+            <div class="search-group">
+                <md-input-container>
+                    <label>Search</label>
+                    <input type="text"
+                           ng-model="$ctrl.searchTerm"
+                           ng-keyup="$ctrl.onKeyUp($event)" />
+                </md-input-container>
+                <md-button class="md-flat md-mini" aria-label="Search Samples" ng-click="$ctrl.doSearch()">
+                    <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
+                </md-button>
+            </div>
 
             <filter-menu label="Status"
                            id-key="statusId"
@@ -20,9 +27,6 @@
                            type="status"
                            value-key="status1">
             </filter-menu>
-            <md-button class="md-flat md-mini md-accent" aria-label="New Sample" ng-click="$ctrl.addSample()">
-                <md-icon md-font-icon="zmdi zmdi-plus"></md-icon>
-            </md-button>
         </div>
     </md-toolbar>
     <div class="sort-bar" flex layout="row" layout-align="start center">
