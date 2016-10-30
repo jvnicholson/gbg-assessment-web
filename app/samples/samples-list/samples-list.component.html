@@ -1,0 +1,36 @@
+<section layout="column" class="samples-list" flex>
+
+    <md-toolbar class="md-primary page-title">
+        <div flex class="md-toolbar-tools" layout="row" layout-align="start center">
+            <h2>Samples ({{ $ctrl.samples.length }})</h2>
+        </div>
+    </md-toolbar>
+
+    <md-toolbar class="list-tools">
+        <div flex layout="row" layout-align="space-between center">
+            <md-input-container>
+                <label>Search</label>
+                <input type="text" ng-model="$ctrl.filter"/>
+            </md-input-container>
+            <md-button class="md-flat md-mini md-accent" aria-label="New Sample" ng-click="$ctrl.addSample()">
+                <md-icon md-font-icon="zmdi zmdi-plus"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <div class="item-list-header" layout="row" layout-align="start center" flex>
+        <div class="cell id"><span>ID</span></div>
+        <div class="cell barcode"><span>Barcode</span></div>
+        <div class="cell date"><span>Created At</span></div>
+        <div class="cell user"><span>Created By</span></div>
+        <div class="cell status"><span>Status</span></div>
+    </div>
+    <md-list class="item-list" flex>
+        <md-list-item class="item"
+                      ng-repeat="sample in $ctrl.samples | filter: $ctrl.filter"
+                      ng-class="{'is-edit': sample.isEdit}"
+                      layout="row"
+                      flex>
+            <samples-list-item item="sample" flex></samples-list-item>
+        </md-list-item>
+    </md-list>
+</section>

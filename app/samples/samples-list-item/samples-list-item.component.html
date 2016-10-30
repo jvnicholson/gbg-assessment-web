@@ -1,0 +1,9 @@
+<div class="item-container"
+     layout="row"
+     layout-align="start center">
+    <div class="cell id"><span>{{ ::$ctrl.item.sampleId }}</span></div>
+    <div class="cell barcode"><span>{{ ::$ctrl.item.barcode }}</span></div>
+    <div class="cell date"><span>{{ ::$ctrl.item.createdAt | date: "MM/dd/yyyy" }}</span></div>
+    <div class="cell user"><span>{{ ::$ctrl.item.createdBy }}</span></div>
+    <div class="cell status"><span class="{{ ::$ctrl.item.className }}">{{ ::$ctrl.item.status }}</span></div>
+</div>
