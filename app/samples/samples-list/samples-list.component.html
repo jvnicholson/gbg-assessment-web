@@ -17,12 +17,21 @@
             </md-button>
         </div>
     </md-toolbar>
-    <div class="item-list-header" layout="row" layout-align="start center" flex>
-        <div class="cell id"><span>ID</span></div>
-        <div class="cell barcode"><span>Barcode</span></div>
-        <div class="cell date"><span>Created At</span></div>
-        <div class="cell user"><span>Created By</span></div>
-        <div class="cell status"><span>Status</span></div>
+    <div class="sort-bar" flex layout="row" layout-align="start center">
+        <div ng-repeat="sortItem in $ctrl.sortItems"
+             class="cell sort-item"
+             ng-class="sortItem.value">
+
+            <md-button aria-label="sort"
+                       ng-click="$ctrl.sortList(sortItem)"
+                       ng-class="{ 'active': sortItem.value === $ctrl.currentSortItem.value }">
+                <span>{{ sortItem.label }}</span>
+                <i class="zmdi zmdi-caret-down"
+                   ng-show="sortItem.value === $ctrl.currentSortItem.value && $ctrl.currentSortItem.isDescending"></i>
+                <i class="zmdi zmdi-caret-up"
+                   ng-hide="sortItem.value === $ctrl.currentSortItem.value && $ctrl.currentSortItem.isDescending"></i>
+            </md-button>
+        </div>
     </div>
     <md-list class="item-list" flex>
         <md-list-item class="item"

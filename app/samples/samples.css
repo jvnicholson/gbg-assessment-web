@@ -3,13 +3,33 @@
     border-bottom: 1px solid rgb(132, 136, 155);
 }
 
-.samples-list .cell {
-    padding: 1em;
+.samples-list .sort-bar {
+    background-color: #dee3f5;
+    border-bottom: 1px solid rgb(132, 136, 155);
+}
+
+.samples-list .sort-bar .cell {
+    padding: 0;
     width: 20%;
+}
+
+.samples-list .sort-bar .cell i.zmdi {
+    font-size: 2em;
+    vertical-align: middle;
+    display: none;
+}
+
+.samples-list .sort-bar .md-button.active .zmdi {
+    display: inline;
 }
 
 .samples-list .item-list {
     padding: 0;
+}
+
+.samples-list .item-list .cell {
+    padding: 1em;
+    width: 20%;
 }
 
 .samples-list .item-list .item-container {
