@@ -12,7 +12,7 @@
 		var ctrl = this;
 
 		// Properties
-		ctrl.filter = "";
+		ctrl.filter = {};
 
 		// Methods
 
