@@ -9,7 +9,8 @@
 
 	/* @ngInject */
 	function SamplesListComponentController(samplesService, statusesService) {
-		var ctrl = this;
+		var ctrl = this,
+			allSamples = [];
 
 		// Properties
 		ctrl.filter = {};
@@ -25,7 +26,8 @@
 
 		function init() {
 			ctrl.statuses = statusesService.statuses.query();
-			ctrl.samples = samplesService.samples.query();
+			allSamples = samplesService.samples.query();
+			ctrl.samples = allSamples;
 			ctrl.sortItems = createSortItems();
 			ctrl.currentSortItem = ctrl.sortItems[0];
 		}
@@ -48,12 +50,12 @@
 					value: 'createdAt'
 				},
 				{
-					isDescending: true,
+					isDescending: false,
 					label: 'Created By',
 					value: 'createdBy'
 				},
 				{
-					isDescending: true,
+					isDescending: false,
 					label: 'Status',
 					value: 'status'
 				}
@@ -62,10 +64,10 @@
 
 		function filterByStatus(item) {
 			if(item.statusId >= 0) {
-				console.log("filter by " + item.status1);
+				ctrl.samples = samplesService.samples.query({statusId: item.statusId});
 			}
 			else {
-				console.log("filter by All")
+				ctrl.samples = allSamples;
 			}
 		}
 
