@@ -16,7 +16,7 @@
 		ctrl.filter = {};
 
 		// Methods
-		ctrl.doSearch = doSearch;
+		ctrl.fetchFilteredResults = fetchFilteredResults;
 		ctrl.onFilterSelect = onFilterSelect;
 		ctrl.onKeyUp = onKeyUp;
 		ctrl.sortList = sortList;
@@ -25,10 +25,6 @@
 		init();
 
 		// Helpers
-		function doSearch() {
-			console.log("do search for: " + ctrl.searchTerm);
-		}
-
 		function init() {
 			ctrl.statuses = statusesService.statuses.query();
 			allSamples = samplesService.samples.query();
@@ -67,13 +63,19 @@
 			];
 		}
 
+		function fetchFilteredResults() {
+			var queryParams = {createdBy: ctrl.searchTerm};
+
+			if (ctrl.selectedStatusId >= 0) {
+				queryParams.statusId = ctrl.selectedStatusId;
+			}
+
+			ctrl.samples = samplesService.samples.query(queryParams);
+		}
+
 		function filterByStatus(item) {
-			if(item.statusId >= 0) {
-				ctrl.samples = samplesService.samples.query({statusId: item.statusId});
-			}
-			else {
-				ctrl.samples = allSamples;
-			}
+			ctrl.selectedStatusId = item.statusId;
+			fetchFilteredResults();
 		}
 
 		function onFilterSelect(item, type) {
@@ -87,8 +89,8 @@
 		}
 
 		function onKeyUp(e) {
-			if(e.keyCode === 13)
-				doSearch();
+			if (e.keyCode === 13)
+				fetchFilteredResults();
 		}
 
 		function sortList(newSort) {

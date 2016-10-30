@@ -15,7 +15,7 @@
                            ng-model="$ctrl.searchTerm"
                            ng-keyup="$ctrl.onKeyUp($event)" />
                 </md-input-container>
-                <md-button class="md-flat md-mini" aria-label="Search Samples" ng-click="$ctrl.doSearch()">
+                <md-button class="md-flat md-mini" aria-label="Search Samples" ng-click="$ctrl.fetchFilteredResults()">
                     <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
                 </md-button>
             </div>
