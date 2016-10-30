@@ -26,12 +26,16 @@ md-toolbar.list-tools md-input-container {
     margin: 0.4em 1em 0 0;
 }
 
-md-toolbar.list-tools md-input-container label {
+md-toolbar.list-tools md-input-container label,
+md-toolbar.list-tools md-input-container.md-input-has-value label,
+md-toolbar.list-tools md-input-container.md-input-focused label {
     color: #FFB300;
     font-size: 0.8em;
 }
 
-md-toolbar.list-tools md-input-container input {
+md-toolbar.list-tools md-input-container input.md-input,
+md-toolbar.list-tools md-input-container.md-input-has-value input.md-input,
+md-toolbar.list-tools md-input-container.md-input-focused input.md-input {
     font-size: 0.9em;
     color: rgb(255, 255, 255);
     border-color: rgb(255, 179, 0);
