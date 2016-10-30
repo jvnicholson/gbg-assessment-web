@@ -8,13 +8,14 @@
 		});
 
 	/* @ngInject */
-	function SamplesListComponentController(samplesService) {
+	function SamplesListComponentController(samplesService, statusesService) {
 		var ctrl = this;
 
 		// Properties
 		ctrl.filter = {};
 
 		// Methods
+		ctrl.onFilterSelect = onFilterSelect;
 		ctrl.sortList = sortList;
 
 		// Init
@@ -23,6 +24,7 @@
 		// Helpers
 
 		function init() {
+			ctrl.statuses = statusesService.statuses.query();
 			ctrl.samples = samplesService.samples.query();
 			ctrl.sortItems = createSortItems();
 			ctrl.currentSortItem = ctrl.sortItems[0];
@@ -56,6 +58,25 @@
 					value: 'status'
 				}
 			];
+		}
+
+		function filterByStatus(item) {
+			if(item.statusId >= 0) {
+				console.log("filter by " + item.status1);
+			}
+			else {
+				console.log("filter by All")
+			}
+		}
+
+		function onFilterSelect(item, type) {
+			switch (type) {
+				case "status":
+					filterByStatus(item);
+					break;
+				default:
+					break;
+			}
 		}
 
 		function sortList(newSort) {

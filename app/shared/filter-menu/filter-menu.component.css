@@ -1,0 +1,30 @@
+filter-menu .filter-menu.md-button {
+    display: inline-block;
+    border-radius: 0.5em;
+    min-width: 2em;
+    min-height: 2em;
+    padding: 0.5em;
+    margin: 0 1em 0 0;
+    line-height: 1em;
+    width: auto;
+    height: auto;
+    background: none;
+    color: white;
+}
+
+filter-menu .filter-menu.md-button .md-ripple-container {
+    border-radius: 0.5em;
+}
+
+filter-menu .filter-menu.md-button .zmdi {
+    font-size: 2em;
+}
+
+filter-menu .filter-menu.md-button .container span {
+    padding-right: 0.5em;
+    text-transform: none;
+}
+
+filter-menu .filter-menu.md-button .container span.filter-label {
+    color: #FFB300;
+}

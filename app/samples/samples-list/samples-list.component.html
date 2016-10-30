@@ -12,6 +12,14 @@
                 <label>Search</label>
                 <input type="text" ng-model="$ctrl.filter.createdBy"/>
             </md-input-container>
+
+            <filter-menu label="Status"
+                           id-key="statusId"
+                           items="$ctrl.statuses"
+                           on-item-select="$ctrl.onFilterSelect(item, type)"
+                           type="status"
+                           value-key="status1">
+            </filter-menu>
             <md-button class="md-flat md-mini md-accent" aria-label="New Sample" ng-click="$ctrl.addSample()">
                 <md-icon md-font-icon="zmdi zmdi-plus"></md-icon>
             </md-button>

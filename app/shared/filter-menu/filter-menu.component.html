@@ -1,0 +1,18 @@
+<md-menu class="filter-menu">
+    <md-button class="filter-menu"
+               aria-label="Open menu"
+               ng-click="$ctrl.openMenu($mdOpenMenu, $event)">
+        <div class="container" layout="row" layout-align="start center">
+            <span class="filter-label">{{ $ctrl.label }}: </span>
+            <span>{{ $ctrl.selectedItem.value }}</span>
+            <i class="zmdi zmdi-caret-down"></i>
+        </div>
+    </md-button>
+    <md-menu-content width="4">
+        <md-menu-item ng-repeat="item in $ctrl.items">
+            <md-button ng-click="$ctrl.selectItem(item)">
+                <span>{{ item.value }}</span>
+            </md-button>
+        </md-menu-item>
+    </md-menu-content>
+</md-menu>
