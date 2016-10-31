@@ -1,0 +1,26 @@
+{
+  "name": "gbg-assessment-web",
+  "version": "1.0.0",
+  "description": "AngularJS Web application assessment for GBG Job Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jvnicholson/gbg-assessment-web.git"
+  },
+  "author": "Josh Nicholson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jvnicholson/gbg-assessment-web/issues"
+  },
+  "homepage": "https://github.com/jvnicholson/gbg-assessment-web#readme",
+  "devDependencies": {
+    "jasmine-core": "^2.5.2",
+    "karma": "^1.3.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-spec-reporter": "0.0.26"
+  }
+}
