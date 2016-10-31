@@ -8,7 +8,7 @@
 		});
 
 	/* @ngInject */
-	function SamplesListComponentController($mdDialog, samplesService, statusesService, usersService) {
+	function SamplesListComponentController($mdDialog, $mdToast, samplesService, statusesService, usersService) {
 		var ctrl = this,
 			allSamples = [];
 
@@ -66,10 +66,21 @@
 
 		function displayError(msg) {
 			console.log(msg);
+			$mdToast.show(
+				$mdToast.simple()
+					.textContent(msg)
+					.position('top right')
+					.hideDelay(3000)
+			);
 		}
 
 		function displaySuccess(msg) {
-			console.log(msg);
+			$mdToast.show(
+				$mdToast.simple()
+					.textContent(msg)
+					.position('top right')
+					.hideDelay(3000)
+			);
 		}
 
 		function fetchAll() {
