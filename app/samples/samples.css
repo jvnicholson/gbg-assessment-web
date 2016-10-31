@@ -102,6 +102,7 @@
 
     .samples-dialog md-dialog-content {
         padding: 1em;
+        min-height: 18em;
     }
 
         .samples-dialog md-dialog-content md-input-container {
