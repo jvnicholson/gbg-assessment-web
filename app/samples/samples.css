@@ -8,52 +8,76 @@
     border-bottom: 1px solid rgb(132, 136, 155);
 }
 
-.samples-list .sort-bar .cell {
-    padding: 0;
-    width: 20%;
-}
+    .samples-list .sort-bar .cell {
+        padding: 0;
+        width: 20%;
+    }
 
-.samples-list .sort-bar .cell i.zmdi {
-    font-size: 2em;
-    vertical-align: middle;
-    display: none;
-}
+        .samples-list .sort-bar .cell i.zmdi {
+            font-size: 2em;
+            vertical-align: middle;
+            display: none;
+        }
 
-.samples-list .sort-bar .md-button.active .zmdi {
-    display: inline;
-}
+    .samples-list .sort-bar .md-button.active .zmdi {
+        display: inline;
+    }
 
 .samples-list .item-list {
     padding: 0;
 }
 
-.samples-list .item-list .cell {
-    padding: 1em;
-    width: 20%;
-}
+    .samples-list .item-list .item {
+        width: 100%;
+        border-bottom: 1px solid rgb(222, 227, 245);
+        padding: 0;
+    }
 
-.samples-list .item-list .item-container {
-    width: 100%;
-    height: 3em;
-    background-color: rgb(255, 255, 255);
-}
+    .samples-list .item-list .item-container {
+        width: 100%;
+        height: 3em;
+        background-color: rgb(255, 255, 255);
+    }
 
-.samples-list .item-list .item {
-    width: 100%;
-    border-bottom: 1px solid rgb(222, 227, 245);
-    padding: 0;
-}
+        .samples-list .item-list .item-container .cell {
+            padding: 1em;
+            width: 20%;
+        }
 
 .samples-list md-toolbar.list-tools md-input-container {
     margin-right: 0;
 }
 
-.samples-list .search-group .md-button {
-    margin: 0;
-    vertical-align: bottom;
+.samples-list .search-group {
+    margin-right: 2em;
 }
 
-.samples-list .search-group .md-button .zmdi {
-    color: #FFB300;
-    font-size: 2em;
+    .samples-list .search-group .md-button {
+        margin: 0;
+        vertical-align: bottom;
+        min-width: 1em;
+    }
+
+        .samples-list .search-group .md-button .zmdi {
+            color: #FFB300;
+            font-size: 2em;
+        }
+
+.samples-list .add-sample-container {
+    text-align: right;
 }
+
+    .samples-list .add-sample-container .md-fab {
+        width: 3em;
+        height: 3em;
+        line-height: 3em;
+        background-color: #FFB300;
+    }
+
+    .samples-list .add-sample-container .md-fab:hover {
+        background-color: #FFB300;
+    }
+
+        .samples-list .add-sample-container .md-fab .zmdi {
+            font-size: 1.5em;
+        }
