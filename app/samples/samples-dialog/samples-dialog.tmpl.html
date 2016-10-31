@@ -1,20 +1,39 @@
-<md-dialog aria-label="Add Sample">
+<md-dialog class="samples-dialog" aria-label="Add Sample">
     <md-toolbar class="md-primary page-title">
         <div flex class="md-toolbar-tools" layout="row" layout-align="space-between center">
             <h2>Add Sample</h2>
-            <md-button class="md-icon-button" ng-click="cancel()">
+            <md-button class="md-icon-button" ng-click="$ctrl.cancel()">
                 <md-icon md-font-icon="zmdi zmdi-close" aria-label="Close dialog"></md-icon>
             </md-button>
         </div>
     </md-toolbar>
 
-    <md-dialog-content>
-        <p>content.</p>
+    <md-dialog-content flex>
+        <md-input-container>
+            <label>Barcode</label>
+            <input type="text" ng-model="$ctrl.data.barcode"/>
+        </md-input-container>
+        <md-input-container>
+            <label>Created By</label>
+            <md-select ng-model="$ctrl.data.createdBy">
+                <md-option ng-repeat="user in $ctrl.locals.users" value="{{ user.userId }}">
+                    {{ ::user.firstName }} {{ ::user.lastName }}
+                </md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container>
+            <label>Status</label>
+            <md-select ng-model="$ctrl.data.statusId">
+                <md-option ng-repeat="status in $ctrl.locals.statuses" value="{{ status.statusId }}">
+                    {{ ::status.status1}}
+                </md-option>
+            </md-select>
+        </md-input-container>
     </md-dialog-content>
 
     <md-dialog-actions layout="row">
         <span flex></span>
-        <md-button ng-click="cancel()">Cancel</md-button>
-        <md-button ng-click="save()">Add Sample</md-button>
+        <md-button ng-click="$ctrl.cancel()">Cancel</md-button>
+        <md-button ng-click="$ctrl.save()">Add Sample</md-button>
     </md-dialog-actions>
 </md-dialog>

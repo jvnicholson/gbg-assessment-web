@@ -4,14 +4,15 @@
 	angular.module('gbg')
 		.controller('SamplesDialogController', SamplesDialogController);
 
-	function SamplesDialogController($mdDialog, $scope) {
+	function SamplesDialogController($mdDialog) {
 		// Properties
+		var ctrl = this;
 
 
 		// Methods
-		$scope.cancel = cancel;
-		$scope.data = {};
-		$scope.save = save;
+		ctrl.cancel = cancel;
+		ctrl.data = {};
+		ctrl.save = save;
 
 
 		// Helpers
@@ -20,7 +21,7 @@
 		}
 
 		function save() {
-			$mdDialog.hide("save the data");
+			$mdDialog.hide(ctrl.data);
 		}
 
 	}

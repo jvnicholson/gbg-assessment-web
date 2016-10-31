@@ -81,3 +81,15 @@
         .samples-list .add-sample-container .md-fab .zmdi {
             font-size: 1.5em;
         }
+
+.samples-dialog {
+    min-width: 40em;
+}
+
+    .samples-dialog md-dialog-content {
+        padding: 1em;
+    }
+
+        .samples-dialog md-dialog-content md-input-container {
+            width: 95%;
+        }

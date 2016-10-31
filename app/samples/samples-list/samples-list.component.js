@@ -8,7 +8,7 @@
 		});
 
 	/* @ngInject */
-	function SamplesListComponentController($mdDialog, samplesService, statusesService) {
+	function SamplesListComponentController($mdDialog, samplesService, statusesService, usersService) {
 		var ctrl = this,
 			allSamples = [];
 
@@ -28,6 +28,7 @@
 		// Helpers
 		function init() {
 			ctrl.statuses = statusesService.statuses.query();
+			ctrl.users = usersService.users.query();
 			allSamples = samplesService.samples.query();
 			ctrl.samples = allSamples;
 			ctrl.sortItems = createSortItems();
@@ -95,14 +96,24 @@
 		}
 
 		function showAddDialog(ev) {
+			var validStatuses = ctrl.statuses.slice();
+
+			validStatuses.shift();
+
 			$mdDialog.show({
+				bindToController: true,
+				clickOutsideToClose: true,
 				controller: 'SamplesDialogController',
-				templateUrl: 'app/samples/samples-dialog/samples-dialog.tmpl.html',
+				controllerAs: '$ctrl',
+				locals: {
+					statuses: validStatuses,
+					users: ctrl.users
+				},
 				parent: angular.element(document.body),
 				targetEvent: ev,
-				clickOutsideToClose: true
+				templateUrl: 'app/samples/samples-dialog/samples-dialog.tmpl.html'
 			}).then(function (data) {
-				console.log(data);
+				console.log(JSON.stringify(data));
 			}, function () {
 				console.log("cancel");
 			});
