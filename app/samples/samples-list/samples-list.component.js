@@ -29,10 +29,9 @@
 		function init() {
 			ctrl.statuses = statusesService.statuses.query();
 			ctrl.users = usersService.users.query();
-			allSamples = samplesService.samples.query();
-			ctrl.samples = allSamples;
 			ctrl.sortItems = createSortItems();
 			ctrl.currentSortItem = ctrl.sortItems[0];
+			fetchAll();
 		}
 
 		function createSortItems() {
@@ -65,6 +64,19 @@
 			];
 		}
 
+		function displayError(msg) {
+			console.log(msg);
+		}
+
+		function displaySuccess(msg) {
+			console.log(msg);
+		}
+
+		function fetchAll() {
+			allSamples = samplesService.samples.query();
+			ctrl.samples = allSamples;
+		}
+
 		function fetchFilteredResults() {
 			var queryParams = {createdBy: ctrl.searchTerm};
 
@@ -87,6 +99,23 @@
 					break;
 				default:
 					break;
+			}
+		}
+
+		function onSaveError(err) {
+			var msg = err.statusText;
+			if(err.data && err.data.message)
+				msg += ": " + err.data.message;
+
+			displayError(msg);
+		}
+
+		function onSaveSuccess(sample) {
+			if (sample.sampleId !== 0) {
+				displaySuccess("Sample saved. Refreshing results.");
+				fetchAll();
+			} else {
+				displayError("There was a problem saving that Sample.");
 			}
 		}
 
@@ -113,14 +142,15 @@
 				targetEvent: ev,
 				templateUrl: 'app/samples/samples-dialog/samples-dialog.tmpl.html'
 			}).then(function (data) {
-				console.log(JSON.stringify(data));
+				var Samples = new samplesService.samples(data);
+				Samples.$save(onSaveSuccess, onSaveError);
 			}, function () {
 				console.log("cancel");
 			});
 		}
 
 		function sortList(newSort) {
-			// clicking the same sort, then toggle ascending/descending
+			// clicking the same column sort, so toggle ascending/descending
 			if (ctrl.currentSortItem && newSort.value === ctrl.currentSortItem.value) {
 				newSort.isDescending = !newSort.isDescending;
 			}

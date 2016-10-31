@@ -11,7 +11,7 @@
 
 		// Methods
 		ctrl.cancel = cancel;
-		ctrl.data = {};
+		ctrl.data = { createdById: 0, statusId: 0 };
 		ctrl.save = save;
 
 
@@ -23,6 +23,5 @@
 		function save() {
 			$mdDialog.hide(ctrl.data);
 		}
-
 	}
 })();

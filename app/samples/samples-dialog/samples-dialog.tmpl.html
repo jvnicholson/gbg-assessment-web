@@ -15,7 +15,7 @@
         </md-input-container>
         <md-input-container>
             <label>Created By</label>
-            <md-select ng-model="$ctrl.data.createdBy">
+            <md-select ng-model="$ctrl.data.createdById">
                 <md-option ng-repeat="user in $ctrl.locals.users" value="{{ user.userId }}">
                     {{ ::user.firstName }} {{ ::user.lastName }}
                 </md-option>
