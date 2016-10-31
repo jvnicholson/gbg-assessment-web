@@ -27,7 +27,15 @@
                            type="status"
                            value-key="status1">
             </filter-menu>
-            <div class="add-sample-container" flex>
+            <div class="filters-group" flex layout="row" layout-align="start center">
+                <span>Filters:</span>
+                <md-input-container>
+                    <label>Barcode</label>
+                    <input type="text"
+                           ng-model="$ctrl.filter.barcode"/>
+                </md-input-container>
+            </div>
+            <div class="add-sample-container">
                 <md-button class="md-fab"
                            aria-label="Add Sample"
                            ng-click="$ctrl.showAddDialog($event)">
