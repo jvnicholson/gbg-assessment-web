@@ -8,7 +8,7 @@
 		});
 
 	/* @ngInject */
-	function SamplesListComponentController(samplesService, statusesService) {
+	function SamplesListComponentController($mdDialog, samplesService, statusesService) {
 		var ctrl = this,
 			allSamples = [];
 
@@ -19,6 +19,7 @@
 		ctrl.fetchFilteredResults = fetchFilteredResults;
 		ctrl.onFilterSelect = onFilterSelect;
 		ctrl.onKeyUp = onKeyUp;
+		ctrl.showAddDialog = showAddDialog;
 		ctrl.sortList = sortList;
 
 		// Init
@@ -91,6 +92,20 @@
 		function onKeyUp(e) {
 			if (e.keyCode === 13)
 				fetchFilteredResults();
+		}
+
+		function showAddDialog(ev) {
+			$mdDialog.show({
+				controller: 'SamplesDialogController',
+				templateUrl: 'app/samples/samples-dialog/samples-dialog.tmpl.html',
+				parent: angular.element(document.body),
+				targetEvent: ev,
+				clickOutsideToClose: true
+			}).then(function (data) {
+				console.log(data);
+			}, function () {
+				console.log("cancel");
+			});
 		}
 
 		function sortList(newSort) {
